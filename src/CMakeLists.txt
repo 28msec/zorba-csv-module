@@ -15,7 +15,7 @@
 # csv
 DECLARE_ZORBA_SCHEMA (FILE csv-options.xsd
   URI "http://www.zorba-xquery.com/modules/converters/csv-options")
-DECLARE_ZORBA_MODULE (URI "http://www.zorba-xquery.com/modules/converters/csv" VERSION 1.1 FILE "csv.xq")
+DECLARE_ZORBA_MODULE (URI "http://www.zorba-xquery.com/modules/converters/csv" VERSION 1.0 FILE "csv.xq")
 
 # add unit test for streambuf implementation in csv, related to streamable strings
 CREATE_TEST_SOURCELIST (
