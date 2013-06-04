@@ -32,7 +32,6 @@
 #include <zorba/singleton_item_sequence.h>
 #include <zorba/empty_sequence.h>
 #include <zorba/zorba_functions.h>
-#include <zorba/file.h>
 
 #include "csv.h"
 
