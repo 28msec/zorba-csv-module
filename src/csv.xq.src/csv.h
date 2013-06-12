@@ -20,7 +20,7 @@
 #include <zorba/iterator.h>
 #include <zorba/external_module.h>
 #include <zorba/function.h>
-#include <zorba/smart_ptr.h>
+#include <zorba/util/smart_ptr.h>
 
 #include "stream_wrapper.h"
 #include "stringiterator_streambuf.h"

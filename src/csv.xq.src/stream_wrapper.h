@@ -17,7 +17,7 @@
 #define ZORBA_PROCESSMODULE_PROCESS_H
 
 #include <zorba/zorba.h>
-#include <zorba/smart_ptr.h>
+#include <zorba/util/smart_ptr.h>
 
 namespace zorba {
 namespace csv {
