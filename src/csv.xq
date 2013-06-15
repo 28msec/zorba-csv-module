@@ -21,7 +21,7 @@ xquery version "3.0";
  : The functions are optimized to work with large amounts of data, in a streaming way.
  :
  : @author Daniel Turcanu
- : @project data processing/data converters
+ : @project Zorba/Data Converters/CSV
  :)
 module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
 
