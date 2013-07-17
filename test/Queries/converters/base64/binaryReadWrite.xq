@@ -1,4 +1,4 @@
-import module namespace base64 = "http://www.zorba-xquery.com/modules/converters/base64";
+import module namespace base64 = "http://zorba.io/modules/base64";
 import module namespace commons = "http://expath.org/ns/file/tests/commons" at "common.xqlib";
 
 import module namespace file = "http://expath.org/ns/file";
