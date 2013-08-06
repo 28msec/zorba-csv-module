@@ -37,7 +37,7 @@ declare %an:sequential function commons:testCreateDirectory($path as xs:string) 
 };
 
 declare %an:sequential function commons:testWriteXml($path as xs:string, $xml as item()) as xs:string* {
-  file:write($path, $xml, ());
+  file:write-text($path, serialize($xml));
   "SUCCESS"
 };
 
@@ -65,12 +65,15 @@ declare %an:nondeterministic %an:sequential function commons:testDelete($path as
 };
 
 declare %an:sequential function commons:testWriteSerializeXml($path as xs:string, $xml as item()) as xs:string* {
-  file:write(
+  file:write-text(
     $path,
-    $xml,
-    <output:serialization-parameters>
-      <output:method value="xml"/>
-    </output:serialization-parameters>);
+    serialize(
+      $xml,
+      <output:serialization-parameters>
+        <output:method value="xml"/>
+      </output:serialization-parameters>
+    )
+  );
 
   "SUCCESS";
 };
