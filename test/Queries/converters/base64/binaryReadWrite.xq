@@ -5,7 +5,7 @@ import module namespace file = "http://expath.org/ns/file";
 
 import schema namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 
-declare namespace an = "http://www.zorba-xquery.com/annotations";
+declare namespace an = "http://zorba.io/annotations";
 
 declare variable $inFile as xs:string := fn:concat(file:dir-name(fn:static-base-uri()), "/../image/images/bird.gif");
 declare variable $testDir as xs:string := fn:concat(file:dir-name(fn:static-base-uri()),"/tmpBinaryReadWrite");
