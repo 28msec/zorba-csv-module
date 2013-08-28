@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data:root
-xmlns:data="http://www.zorba-xquery/data"
+xmlns:data="http://zorba.io/data"
 >
 	<data:person>
 		<data:name>N1</data:name>

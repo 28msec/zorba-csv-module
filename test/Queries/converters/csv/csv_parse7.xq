@@ -11,7 +11,7 @@ validate{
        quote-char="&quot;"
        quote-escape="&quot;&quot;"/>
   <xml-nodes>
-    <test7:row xmlns:test7="http://www.zorba-xquery/modules/csv">
+    <test7:row xmlns:test7="http://zorba.io/modules/csv">
       <column/>
     </test7:row>
   </xml-nodes>
