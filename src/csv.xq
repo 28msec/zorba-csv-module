@@ -23,7 +23,7 @@ xquery version "3.0";
  : @author Daniel Turcanu
  : @project Zorba/Data Converters/CSV
  :)
-module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+module namespace csv = "http://zorba.io/modules/csv";
 
 (:~
  : Import module for checking if csv options element is validated.
@@ -33,7 +33,7 @@ import module namespace schemaOptions = "http://www.zorba-xquery.com/modules/sch
 (:~
  : Contains the definitions of the csv options element.
   :)
-import schema namespace csv-options = "http://www.zorba-xquery.com/modules/converters/csv-options";
+import schema namespace csv-options = "http://zorba.io/modules/csv-options";
 
 declare namespace ver = "http://zorba.io/options/versioning";
 declare option ver:module-version "1.0";
@@ -68,7 +68,7 @@ declare option ver:module-version "1.0";
  :    &lt;/csv-options:options><br/>
  :    <br/>
  :    All the parameters are optional and can appear in any order.<br/>
- :    All the parameters are case sensitive. The namespace used is "http://www.zorba-xquery.com/modules/converters/csv-options".<br/>
+ :    All the parameters are case sensitive. The namespace used is "http://zorba.io/modules/csv-options".<br/>
  :    All strings must have UTF-8 encoding.<br/>
  :    Parameters csv, column-widths, column-positions are mutually exclusive. If none is specified, 
  :    the input string is assumed to be csv.<br/>
@@ -180,7 +180,7 @@ declare option ver:module-version "1.0";
  :     </dd>
  :    </dl>
  : @param $csv the string containing the csv or fixed size text.
- : @param $options this parameter is validated against "http://www.zorba-xquery.com/modules/converters/csv-options" schema. 
+ : @param $options this parameter is validated against "http://zorba.io/modules/csv-options" schema. 
  :    If this parameter is not specified, the row name is by default "row" and the column name is by default "column". 
  : @return a sequence of row elements, one for each line in csv
  : @error csv:CSV001 if the input string is streamable string and cannot be rewinded
@@ -250,7 +250,7 @@ declare %private function csv:parse-internal($csv as xs:string,
  : </pre>
  :
  : All the parameters are optional and can appear in any order.<br/>
- : All the parameters are case sensitive. The namespace used is "http://www.zorba-xquery.com/modules/converters/csv-options".<br/>
+ : All the parameters are case sensitive. The namespace used is "http://zorba.io/modules/csv-options".<br/>
  : All strings must have UTF-8 encoding.<br/>
  : Parameters csv, column-widths, column-positions are mutually exclusive.
  : If none is specified, the xml is converted to csv.
@@ -334,7 +334,7 @@ declare %private function csv:parse-internal($csv as xs:string,
  : @param $xml a sequence of elements, each element representing a row. The name of each row element is ignored.
  :     The childs of each row are the column fields.
  : @param $options The options parameter. See the function description for details. 
- : This parameter is validated against "http://www.zorba-xquery.com/modules/converters/csv-options" schema.
+ : This parameter is validated against "http://zorba.io/modules/csv-options" schema.
  : @return the csv or fixed size text as string containing all the lines
  : @error csv:CSV003 if the serialize output is streamable string and cannot be reset
  : @error csv:ForeignInput if there are input elements in subsequent rows that do not match the headers,

@@ -1,5 +1,5 @@
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 import module namespace file="http://expath.org/ns/file";
 
 let $options :=

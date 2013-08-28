@@ -3,8 +3,8 @@ Parse a text with fixed size columns, and then serialize it back with different 
 The align attributes are ignored in the parse function.
 The data file is taken from http://data.gov.
 :)
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 import module namespace file="http://expath.org/ns/file";
 
 let $options :=

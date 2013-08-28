@@ -1,4 +1,4 @@
-<csv-options:options xmlns:csv-options="http://www.zorba-xquery.com/modules/converters/csv-options">
+<csv-options:options xmlns:csv-options="http://zorba.io/modules/csv-options">
 <first-row-is-headers/>
   <csv separator="&#009;"
        quote-char="&quot;"

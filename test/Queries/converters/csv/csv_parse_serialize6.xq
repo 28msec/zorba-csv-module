@@ -4,8 +4,8 @@ then serialize back to the same format.
 Note the character escaping for the QNames. Also the empty line from subheader is ignored.
 The csv has been taken from http://data.gov.
 :)
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 import module namespace file="http://expath.org/ns/file";
 
 let $options := 

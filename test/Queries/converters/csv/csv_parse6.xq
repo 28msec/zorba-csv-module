@@ -3,8 +3,8 @@ Parse a csv with header and subheaders, starting from line 5.
 Data continues after subheaders.
 The csv file is taken from http://data.gov.
 :)
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 import module namespace file="http://expath.org/ns/file";
 
 csv:parse(file:read-text(fn:resolve-uri("Hospital Outpatient Payments for 61 Commonly Performed Procedures, CY 2008 Data.csv")),

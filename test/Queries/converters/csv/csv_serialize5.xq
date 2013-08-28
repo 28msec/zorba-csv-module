@@ -2,8 +2,8 @@
 Note that the last node has element names that do not correpond to the header names taken from the first node,
 so it is not processed.
 :)
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 
 
 let $options := 

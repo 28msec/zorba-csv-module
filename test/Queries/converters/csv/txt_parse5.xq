@@ -2,8 +2,8 @@
 The text file is taken from http://data.gov.
 :)
 
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 import module namespace file="http://expath.org/ns/file";
 
 csv:parse(file:read-text(fn:resolve-uri("PUAOSL95.TXT")),

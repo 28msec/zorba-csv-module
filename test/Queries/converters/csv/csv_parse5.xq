@@ -1,5 +1,5 @@
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 import module namespace file="http://expath.org/ns/file";
 
 let $options := validate{
@@ -9,7 +9,7 @@ let $options := validate{
        quote-char=""
        quote-escape=""/>
   <xml-nodes>
-    <csv:row xmlns:csv="http://www.zorba-xquery.com/modules/converters/csv"/>
+    <csv:row xmlns:csv="http://zorba.io/modules/csv"/>
   </xml-nodes>
 </csv-options:options>}
 return 
