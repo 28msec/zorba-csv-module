@@ -23,7 +23,7 @@ xquery version "3.0";
  : @author Daniel Turcanu
  : @project Zorba/Data Converters/CSV
  :)
-module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+module namespace csv = "http://zorba.io/modules/csv";
 
 (:~
  : Import module for checking if csv options element is validated.
@@ -33,7 +33,7 @@ import module namespace schemaOptions = "http://www.zorba-xquery.com/modules/sch
 (:~
  : Contains the definitions of the csv options element.
   :)
-import schema namespace csv-options = "http://www.zorba-xquery.com/modules/converters/csv-options";
+import schema namespace csv-options = "http://zorba.io/modules/csv-options";
 
 declare namespace ver = "http://zorba.io/options/versioning";
 declare option ver:module-version "1.0";
@@ -42,33 +42,34 @@ declare option ver:module-version "1.0";
  : Parse a CSV or fixed size text and convert to XML.<br/>
  : By default each line is converted to a &lt;row> element, and each field to a &lt;column> element inside &lt;row>.<br/>
  : The format of the param $options is:<br/>
- :    &lt;csv-options:options><br/>
- :        &lt;csv  [separator="default comma ,"] ? <br/>
- :          [quote-char="default double quotes &amp;quote;"]? <br/>
- :          [quote-escape="default double double quotes &amp;quote;&amp;quote;"]? /> <br/>
- :        <br/>
- :        or<br/>
- :        &lt;column-widths><br/>
- :          &lt;column-width><i>[column fixed width, unsigned int]</i>&lt;column-width>*<br/>
- :		  	&lt;/column-widths><br/>
- :        <br/>
- :        or<br/>
- :        &lt;column-positions><br/>
- :          &lt;column-position><i>[column position on line, unsigned int]</i>&lt;column-position>*<br/>
- :		  	&lt;/column-positions><br/>
- :        <br/>
- :        &lt;first-row-is-header [line="<i>first_line[-last_line]?</i>"]?/>?<br/>
- :        &lt;start-from-row line="<i>first_line[-last_line]?</i>"/>?<br/>
- :        &lt;add-last-void-columns/>?<br/>
- :        &lt;xml-nodes><br/>
- :          [&lt;<i>row-name</i>><br/>
- :            [&lt;<i>column-name/</i>>]?<br/>
- :          &lt;/<i>row-name</i>>]?<br/>
- :        &lt;/xml-nodes>?<br/>
- :    &lt;/csv-options:options><br/>
- :    <br/>
+ :  <pre>
+ :    &lt;csv-options:options>
+ :        &lt;csv  [separator="default comma ,"] ?
+ :          [quote-char="default double quotes &amp;quote;"]?
+ :          [quote-escape="default double double quotes &amp;quote;&amp;quote;"]? />
+ : 
+ :        or
+ :        &lt;column-widths>
+ :          &lt;column-width><i>[column fixed width, unsigned int]</i>&lt;column-width>*
+ :        &lt;/column-widths>
+ :
+ :        or
+ :        &lt;column-positions>
+ :          &lt;column-position><i>[column position on line, unsigned int]</i>&lt;column-position>*
+ :        &lt;/column-positions>
+ :
+ :        &lt;first-row-is-header [line="<i>first_line[-last_line]?</i>"]?/>?
+ :        &lt;start-from-row line="<i>first_line[-last_line]?</i>"/>?
+ :        &lt;add-last-void-columns/>?
+ :        &lt;xml-nodes>
+ :          [&lt;<i>row-name</i>>
+ :            [&lt;<i>column-name/</i>>]?
+ :          &lt;/<i>row-name</i>>]?
+ :        &lt;/xml-nodes>?
+ :    &lt;/csv-options:options>
+ :  </pre>
  :    All the parameters are optional and can appear in any order.<br/>
- :    All the parameters are case sensitive. The namespace used is "http://www.zorba-xquery.com/modules/converters/csv-options".<br/>
+ :    All the parameters are case sensitive. The namespace used is "http://zorba.io/modules/csv-options".<br/>
  :    All strings must have UTF-8 encoding.<br/>
  :    Parameters csv, column-widths, column-positions are mutually exclusive. If none is specified, 
  :    the input string is assumed to be csv.<br/>
@@ -108,17 +109,19 @@ declare option ver:module-version "1.0";
  :        If it is not present, then each field is enclosed in a &lt;column> element, 
  :        or how it is specified in &lt;xml-nodes> parameter.<br/>
  :        If the first row is the header, then each field is enclosed in an element with the corresponding name from the header.<br/>
- :        For example, the csv:<br/>
- :        <i>ID,Name,Occupation<br/>
- :        1,John,student</i><br/>
- :        <br/>
- :        is parsed into<br/>
- :        <i>&lt;row><br/>
- :        &lt;ID>1&lt;/ID><br/>
- :        &lt;Name>John&lt;/Name><br/>
- :        &lt;Occupation>student&lt;/Occupation><br/>
- :        &lt;/row></i><br/>
- :			  <br/>
+ :        For example, the csv:
+ :        <pre>
+ :        <i>ID,Name,Occupation
+ :        1,John,student</i>
+ :        </pre>
+ :        is parsed into:
+ :        <pre>
+ :        <i>&lt;row>
+ :        &lt;ID>1&lt;/ID>
+ :        &lt;Name>John&lt;/Name>
+ :        &lt;Occupation>student&lt;/Occupation>
+ :        &lt;/row></i>
+ :        </pre>
  :        If the header names contain characters that cannot be used in a QName, they are replaced with underscore '_'.<br/>
  :        The namespace for the header QNames is taken from the column name specified in xml-nodes parameter, or from
  :        the row name, or if that doesn't exist either then empty namespace is used. <br/>
@@ -126,23 +129,25 @@ declare option ver:module-version "1.0";
  :        If a column does not have a name, a new name is constructed in the form <i>columnN</i> where N is the position of the column,
  :        starting from 1.<br/>
  :        <b>Subheaders</b><br/>
- :				If the header consists of more than one line, this can be specified in the <b>line</b> attribute in the form
+ :        If the header consists of more than one line, this can be specified in the <b>line</b> attribute in the form
  :        "<i>first_line - last_line</i>". Having more lines as the header translates into a hierarchy of elements in the xml.<br/>
- :        For example, the csv:<br/>
- :        <i>ID,Name,,Occupation<br/>
- :        ,First Name,Last Name,<br/>
- :        1,John,Howard,student</i><br/>
- :				<br/>
- :        is parsed into<br/>
- :        <i>&lt;row><br/>
- :        &lt;ID>1&lt;/ID><br/>
- :        &lt;Name><br/>
- :          &lt;First_Name>John&lt;/First_Name><br/>
- :          &lt;Last_Name>Howard&lt;/Last_Name><br/>
- :        &lt;/Name><br/>
- :        &lt;Occupation>student&lt;/Occupation><br/>
- :        &lt;/row></i><br/>
- :        <br/>
+ :        For example, the csv:
+ :        <pre>
+ :        <i>ID,Name,,Occupation
+ :        ,First Name,Last Name,
+ :        1,John,Howard,student</i>
+ :        </pre>
+ :        is parsed into:
+ :        <pre>
+ :        <i>&lt;row>
+ :        &lt;ID>1&lt;/ID>
+ :        &lt;Name>
+ :          &lt;First_Name>John&lt;/First_Name>
+ :          &lt;Last_Name>Howard&lt;/Last_Name>
+ :        &lt;/Name>
+ :        &lt;Occupation>student&lt;/Occupation>
+ :        &lt;/row></i>
+ :        </pre>
  :        This element can have an attribute "accept-all-lines" with values "false" or "true" (default "false").
  :        When set to true it tells the parser to not report lines that do not have the same number of items as 
  :        the header. If set to false, the parser will raise a csv:WrongInput error for these lines.<br/>
@@ -164,23 +169,26 @@ declare option ver:module-version "1.0";
  :        The element child of this row element is the column element, and its name will be used as the name of the column elements
  :        that enclose the fields in the output xml if there is no header. <br/>
  :        If the csv has a header, only the namespace is used from the column element.<br/>
- :        For example, with parameter:<br/>
- :        <i>&lt;xml-nodes><br/>
- :        &lt;r><br/>
- :          &lt;c/><br/>
- :        &lt;/r><br/>
- :        &lt;/xml-nodes></i><br/>
- :        <br/>
- :        the output for each line will look like<br/>
- :        <i>&lt;r><br/>
- :          &lt;c>field1&lt;/c><br/>
- :          &lt;c>field2&lt;/c><br/>
- :          .......<br/>
- :        &lt;/r></i><br/>        
+ :        For example, with parameter:
+ :        <pre>
+ :        <i>&lt;xml-nodes>
+ :        &lt;r>
+ :          &lt;c/>
+ :        &lt;/r>
+ :        &lt;/xml-nodes></i>
+ :        </pre>
+ :        the output for each line will look like:
+ :        <pre>
+ :        <i>&lt;r>
+ :          &lt;c>field1&lt;/c>
+ :          &lt;c>field2&lt;/c>
+ :          .......
+ :        &lt;/r></i>
+ :        </pre>
  :     </dd>
  :    </dl>
  : @param $csv the string containing the csv or fixed size text.
- : @param $options this parameter is validated against "http://www.zorba-xquery.com/modules/converters/csv-options" schema. 
+ : @param $options this parameter is validated against "http://zorba.io/modules/csv-options" schema. 
  :    If this parameter is not specified, the row name is by default "row" and the column name is by default "column". 
  : @return a sequence of row elements, one for each line in csv
  : @error csv:CSV001 if the input string is streamable string and cannot be rewinded
@@ -238,19 +246,19 @@ declare %private function csv:parse-internal($csv as xs:string,
  :        or<br/>
  :        &lt;column-widths [align="left|right"]?><br/>
  :          &lt;column-width [align="left|right"]?><i>[column fixed width, unsigned int]</i>&lt;column-width>*<br/>
- :		  	&lt;/column-widths><br/>
+ :        &lt;/column-widths><br/>
  :        <br/>
  :        or<br/>
  :        &lt;column-positions [align="left|right"]?><br/>
  :          &lt;column-position [align="left|right"]?><i>[column position on line, unsigned int]</i>&lt;column-position>*<br/>
- :		  	&lt;/column-positions><br/>
+ :        &lt;/column-positions><br/>
  :        <br/>
  :        &lt;first-row-is-header/>?<br/>
  :    &lt;/csv-options:options>
  : </pre>
  :
  : All the parameters are optional and can appear in any order.<br/>
- : All the parameters are case sensitive. The namespace used is "http://www.zorba-xquery.com/modules/converters/csv-options".<br/>
+ : All the parameters are case sensitive. The namespace used is "http://zorba.io/modules/csv-options".<br/>
  : All strings must have UTF-8 encoding.<br/>
  : Parameters csv, column-widths, column-positions are mutually exclusive.
  : If none is specified, the xml is converted to csv.
@@ -301,7 +309,7 @@ declare %private function csv:parse-internal($csv as xs:string,
  :        is converted to<br/>
  :        <i>ID,Name,Occupation<br/>
  :        1,John,student</i><br/>
- :			  <br/>
+ :        <br/>
  :        The header names are the localnames of the column elements, and the namespace is ignored.<br/>
  :        <b>Subheaders</b><br/>
  :        If the row-column hierarchy is more complex, then subheaders are also generated on subsequent lines.
@@ -322,7 +330,7 @@ declare %private function csv:parse-internal($csv as xs:string,
  :        <i>ID,Name,,Occupation<br/>
  :        ,,First Name,Last Name,<br/>
  :        1,Mr.,John,Howard,student</i><br/>
- :				<br/>
+ :        <br/>
  :        If first-row-is-header is not specified and the columns have a deeper hierarchy,
  :          only the first layer of columns is processed, and the fields are the string values of each column.<br/>
  :        This element can have an attribute "ignore-foreign-input" with values "false" or "true" (default "false").
@@ -334,7 +342,7 @@ declare %private function csv:parse-internal($csv as xs:string,
  : @param $xml a sequence of elements, each element representing a row. The name of each row element is ignored.
  :     The childs of each row are the column fields.
  : @param $options The options parameter. See the function description for details. 
- : This parameter is validated against "http://www.zorba-xquery.com/modules/converters/csv-options" schema.
+ : This parameter is validated against "http://zorba.io/modules/csv-options" schema.
  : @return the csv or fixed size text as string containing all the lines
  : @error csv:CSV003 if the serialize output is streamable string and cannot be reset
  : @error csv:ForeignInput if there are input elements in subsequent rows that do not match the headers,
@@ -351,7 +359,7 @@ declare %private function csv:parse-internal($csv as xs:string,
  : @example test/Queries/converters/csv/txt_parse_serialize6.xq
 :)
 declare function csv:serialize($xml as element()*,
-									             $options as element(csv-options:options)?) as xs:string
+                               $options as element(csv-options:options)?) as xs:string
 {
   let $validated-options :=
   if(empty($options)) then
@@ -364,6 +372,8 @@ declare function csv:serialize($xml as element()*,
   return
     csv:serialize-internal($xml, $validated-options)
 };
-																		
+                                    
 declare %private function csv:serialize-internal($xml as element()*,
-									$options as element(csv-options:options, csv-options:optionsType)?) as xs:string external;
+                  $options as element(csv-options:options, csv-options:optionsType)?) as xs:string external;
+
+(: vim:set et sw=2 ts=2: :)

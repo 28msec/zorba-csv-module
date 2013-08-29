@@ -5,8 +5,8 @@ so it is ignored.
 Also note the truncation of fields.
  :)
 
-import schema namespace csv-options="http://www.zorba-xquery.com/modules/converters/csv-options";
-import module namespace csv = "http://www.zorba-xquery.com/modules/converters/csv";
+import schema namespace csv-options="http://zorba.io/modules/csv-options";
+import module namespace csv = "http://zorba.io/modules/csv";
 
 csv:serialize(
 (<row1>

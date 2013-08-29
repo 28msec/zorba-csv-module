@@ -67,7 +67,7 @@ CSVModule::getExternalFunction(const zorba::String &aLocalname)
   return NULL;
 }
 
-const char* CSVModule::theModule = "http://www.zorba-xquery.com/modules/converters/csv";
+const char* CSVModule::theModule = "http://zorba.io/modules/csv";
 
 void
 CSVModule::destroy()
