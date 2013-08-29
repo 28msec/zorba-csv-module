@@ -176,7 +176,7 @@ declare option ver:module-version "1.0";
  :          &lt;c/>
  :        &lt;/r>
  :        &lt;/xml-nodes></i>
- :        </ore>
+ :        </pre>
  :        the output for each line will look like:
  :        <pre>
  :        <i>&lt;r>
