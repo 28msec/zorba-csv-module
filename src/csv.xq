@@ -28,7 +28,7 @@ module namespace csv = "http://zorba.io/modules/csv";
 (:~
  : Import module for checking if csv options element is validated.
  :)
-import module namespace schemaOptions = "http://www.zorba-xquery.com/modules/schema";
+import module namespace schemaOptions = "http://zorba.io/modules/schema";
 
 (:~
  : Contains the definitions of the csv options element.
