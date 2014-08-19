@@ -1,5 +1,5 @@
 Serialization: --method TXT
-COMPARISON: Text
+Comparison: Text
 Args: 
 -x 
 input-xml=$RBKT_SRC_DIR/Queries/converters/csv/data.xml
