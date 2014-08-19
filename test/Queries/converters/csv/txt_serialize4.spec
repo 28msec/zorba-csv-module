@@ -1,2 +1,2 @@
 Serialization: --method TXT
-COMPARISON: Text
+Comparison: Text
